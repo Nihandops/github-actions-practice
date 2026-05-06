@@ -7,12 +7,15 @@ on:
 
 jobs:
   say-hello:
-    run: |
-      echo "Server date:"
-      date
-      echo "Current user:"
-       whoami
-  
+    runs-on: ubuntu-latest
+
     steps:
+      - name: System info
+        run: |
+          echo "Server date:"
+          date
+          echo "Current user:"
+          whoami
+
       - name: Print message
         run: echo "Hello, GitHub Actions!"
