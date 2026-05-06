@@ -1,4 +1,4 @@
-name: My First Workflow
+name: Node App CI
 
 on:
   push:
@@ -6,16 +6,17 @@ on:
       - main
 
 jobs:
-  say-hello:
+  run-node-app:
     runs-on: ubuntu-latest
 
     steps:
-      - name: System info
-        run: |
-          echo "Server date:"
-          date
-          echo "Current user:"
-          whoami
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Print message
-        run: echo "Hello, GitHub Actions!"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run app
+        run: node app.js
